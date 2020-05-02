@@ -1,0 +1,48 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+{% load humanize %}
+
+
+{% block main %}
+
+
+
+    <div class="col-md-4 mt-4">
+      <form  method="POST" >
+
+        {% csrf_token %}
+        {{ form | crispy}}
+        <button class="btn btn-outline-primary">
+            Order Now
+        </button>
+      </form>
+    </div>
+    <div class="col-md-4  offset-md-4 mt-4" >
+        <div class="card text-center">
+            <div class="card-header">
+              <h3 class="text-info"> Your Order</h3>
+            </div>
+            <div class="card-body">
+            <table>
+                {% with orders=cart.get_total_carts %}
+             
+                <ul>
+                    {% for order in orders %}
+                    <li class="text-primary">{{order.obj.name}} - <b> Rs, {{order.price}}</b></li>
+                    {% endfor %}
+                </ul>
+  
+                {% endwith %}
+            </table>
+            </div>
+            <div class="cart-footer">
+            <h3 class="text-danger">Total: Rs:{{cart.get_total_cart_price | intcomma}}</h3>
+            </div>
+         
+          </div>
+       
+    </div>
+
+
+
+{% endblock %}

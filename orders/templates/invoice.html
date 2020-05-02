@@ -1,0 +1,114 @@
+<html>
+<head>
+  <title>Test</title>
+  <style>
+     .body-main {
+     background: #ffffff;
+     border-bottom: 15px solid #1E1F23;
+     border-top: 15px solid #1E1F23;
+     margin-top: 30px;
+     margin-bottom: 30px;
+     padding: 40px 30px !important;
+     position: relative;
+     box-shadow: 0 1px 21px #808080;
+     font-size: 10px
+ }
+
+ .main thead {
+     background: #1E1F23;
+     color: #fff
+ }
+
+ .img {
+     height: 100px
+ }
+
+ h1 {
+     text-align: center
+ }
+  </style>
+<!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+<!-- Optional theme -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+
+<!-- Latest compiled and minified JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+</head>
+<body>
+  <div class="container">
+    <div class="page-header">
+        <h1>Invoice Template </h1>
+    </div>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6 col-md-offset-3 body-main">
+                <div class="col-md-12">
+                    <div class="row">
+                        <div class="col-md-4"> <img class="img" alt="Invoce Template" src="http://pngimg.com/uploads/shopping_cart/shopping_cart_PNG59.png" /> </div>
+                        <div class="col-md-8 text-right">
+                            <h4 style="color: #F81D2D;"><strong>Dang Shop Pvt.Ltd</strong></h4>
+                            <p>22400 ,Bharatput11</p>
+                            <p>Ghorahi DAng</p>
+                            <p>dangshop@gmail.com</p>
+                        </div>
+                    </div> <br />
+                    <div class="row">
+                        <div class="col-md-12 text-center">
+                            <h2>INVOICE</h2>
+                            <h5>{{order_no}}</h5>
+                        </div>
+                    </div> <br />
+                    <div>
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th>
+                                        <h5>Description</h5>
+                                    </th>
+                                    <th>
+                                      <h5>quantity</h5>
+                                  </th>
+                                    <th>
+                                        <h5>Amount</h5>
+                                    </th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                              {% for order in orders %}
+                                <tr>
+                                    <td class="col-md-9">{{order.product.name}}</td>
+                                    <td class="col-md-3"><i class="fas fa-rupee-sign" area-hidden="true"></i> {{order.quantity}} </td>
+                                    <td class="col-md-3"><i class="fas fa-rupee-sign" area-hidden="true"></i> 
+                                      {% widthratio order.product.price 1 order.quantity %}
+                                      </td>
+                                
+                                  </tr>
+                          
+                        {% endfor %}
+                                <tr style="color: #F81D2D;">
+                                    <td class="text-right">
+                                        <h4><strong>Total:</strong></h4>
+                                    </td>
+                                    <td class="text-left">
+                                        <h4><strong><i class="fas fa-rupee-sign" area-hidden="true"></i> Rs,{{total_amount}} </strong></h4>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                        <div class="col-md-12">
+                            <p><b>Date :</b> 6 June 2019</p> <br />
+                            <p><b>Signature</b></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>

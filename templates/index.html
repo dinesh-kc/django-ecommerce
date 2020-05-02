@@ -1,0 +1,82 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+
+
+{% block sidebar %}
+<div class="col-md-3">
+    <div class="card  text-center ">
+        <div class="card-header bg-info">
+            Product Category
+        </div>
+        <div class="card-body">
+            <form method="GET">
+              {{form | crispy}}
+                <button type="submit" class="btn btn-outline-info">Filter</button>
+            </form>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+
+
+{% block main %}
+<div class="col-md-9">
+    <div class="row mt-2 pb-3">
+        {% for product in products %}
+        <div class="col-md-3">
+
+            <div class="card-deck">
+                <div class="card p-2 border-secondary mb-2">
+
+                    <img {% if product.image %} src="{{product.image.url}}" {% endif %} alt="img " height="135">
+                    <div class="card-body p-1">
+                        <h5 class="card-title text-center text-info">{{product.name}}</h5>
+                        <h5 class="card-text text-center text-danger">
+                            <i class="fa fa-inr" aria-hidden="true"></i>{{product.price}}</h5>
+
+
+                    </div>
+                    <div class="card-footer">
+                        <a type="button" class="btn btn-link text-primary" data-toggle="modal"
+                            data-target="#exampleModal" >
+                            View More
+                        </a>
+                      
+                            <form action="" method="post" style="margin-left: -24px; margin-right: -24px;">
+                                {% csrf_token %}
+                                <input type="number" name="quantity" placeholder="1" style="width: 68px;"/>
+                                <button class="btn btn-primary btn-sm" type="submit">
+                                <i class="fa fa-plus" aria-hidden="true"></i>
+                                Add to cart
+                                </button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            <!-- Modal -->
+            <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+                aria-hidden="true">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="exampleModalLabel">Product Details</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body">
+                            {{product.description}}
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+
+        </div>
+        {% endfor %}
+    </div>
+</div>
+</div>
+
+{% endblock %}
