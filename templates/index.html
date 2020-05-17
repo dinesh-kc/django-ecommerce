@@ -43,7 +43,7 @@
                             View More
                         </a>
                       
-                            <form action="" method="post" style="margin-left: -24px; margin-right: -24px;">
+                            <form action="{% url 'add_to_cart' product.id %}" method="post" style="margin-left: -24px; margin-right: -24px;">
                                 {% csrf_token %}
                                 <input type="number" name="quantity" placeholder="1" style="width: 68px;"/>
                                 <button class="btn btn-primary btn-sm" type="submit">
