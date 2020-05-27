@@ -1,5 +1,7 @@
 from django.conf import settings 
+from decimal import Decimal
 
+from shop.models import Product
 class Cart(object):
     def __init__(self,request):
         self.session = request.session
@@ -30,5 +32,44 @@ class Cart(object):
         
     def save(self):
         self.session.modified = True
+
     def list(self):
-        return self.cart
+        carts = []
+        for product_id in self.cart.keys():
+            obj = Product.objects.get(id=product_id)
+            tmp_cart = {
+                'id':product_id,
+                'obj':obj,
+                'quantity':self.cart[product_id]['quantity'],
+                'price': Decimal(int(self.cart[product_id]['quantity']) * float(obj.price))
+            }
+            carts.append(tmp_cart)
+        return carts
+
+    def get_total_amount(self):
+        return sum(float(v['price']) for v in self.cart.values())
+
+        '''
+        cart = {'3': {'quantity': 8.0, 'price': '3455.00'}}
+        cart[3] = {'quantity': 8.0, 'price': '3455.00'}
+        cart[3]['quantity'] = 8.0
+
+
+
+        '''
+    def update(self,quantity,product_id):
+        pid = str(product_id)
+        '''
+dct = {'1':"idnesa','2':"dont knwo"}
+dct['1'] = 'fjdsfk'
+        '''
+        # print(self.cart)s
+        self.cart[pid]['quantity'] = quantity
+        self.save()
+        print(self.cart)
+
+    def delete(self,product_id):
+        pid = str(product_id)
+        del self.cart[pid]
+        self.save()
+
