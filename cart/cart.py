@@ -2,6 +2,7 @@ from django.conf import settings
 from decimal import Decimal
 
 from shop.models import Product
+
 class Cart(object):
     def __init__(self,request):
         self.session = request.session
@@ -47,7 +48,7 @@ class Cart(object):
         return carts
 
     def get_total_amount(self):
-        return sum(float(v['price']) for v in self.cart.values())
+        return sum(float(v['price'] ) for v in self.cart.values())
 
         '''
         cart = {'3': {'quantity': 8.0, 'price': '3455.00'}}
