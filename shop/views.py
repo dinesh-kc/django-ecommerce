@@ -8,10 +8,18 @@ from .forms import *
 def index(request):
     context  = {
         'products':Product.objects.all(),
-        'form':FilterForm() 
+        'form':FilterForm(),
+        'products_limited':Product.objects.all()[:4],
+        
         }
     
     return render(request,'index.html',context)
+
+def shop_page(request):
+    context = {
+        'products':Product.objects.all()
+    }
+    return render(request,'shop.html',context=context)
 
 def product_detail(request,slug):
     product = Product.objects.filter(slug__icontains=slug)

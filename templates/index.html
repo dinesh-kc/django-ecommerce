@@ -15,7 +15,7 @@
                             <div class="product-f-image">
                                 <img src="{{product.image.url}}" alt="Product image" style="height: 216px;">
                                 <div class="product-hover">
-                                    <a href="#" class="add-to-cart-link"><i class="fa fa-shopping-cart"></i> Add to cart</a>
+                                    <!-- <a href="{% url 'add_to_cart' product.id %}" class="add-to-cart-link"><i class="fa fa-shopping-cart"></i> Add to cart</a> -->
                                     <a href="{% url 'product_detail' product.slug %}" class="view-details-link"><i class="fa fa-link"></i> See details</a>
                                 </div>
                             </div>
@@ -37,4 +37,85 @@
     </div>
 </div> <!-- End main content area -->
 
+{% endblock %}
+
+{% block extra %}
+
+<div class="product-widget-area">
+    <div class="zigzag-bottom"></div>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-4">
+                <div class="single-product-widget">
+                    <h2 class="product-wid-title">Top Sellers</h2>
+                    <a href="" class="wid-view-more">View All</a>
+                    {% for pl in products_limited %}
+                    <div class="single-wid-product">
+                        <a href="{% url 'product_detail' pl.slug %}"><img src="{{pl.image.url}}" alt="" class="product-thumb"></a>
+                        <h2><a href="{% url 'product_detail' pl.slug %}">{{pl.name}}</a></h2>
+                        <!-- <div class="product-wid-rating">
+                            <i class="fa fa-star"></i>
+                            <i class="fa fa-star"></i>
+                            <i class="fa fa-star"></i>
+                            <i class="fa fa-star"></i>
+                            <i class="fa fa-star"></i>
+                        </div> -->
+                        <div class="product-wid-price">
+                            <ins>{{pl.price}}</ins> <del>{{pl.price | add:500}}</del>
+                        </div>                            
+                    </div>
+                    {% endfor %}
+               
+                 
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="single-product-widget">
+                    <h2 class="product-wid-title">Recently Viewed</h2>
+                    <a href="#" class="wid-view-more">View All</a>
+                    {% for pl in products_limited %}
+                    <div class="single-wid-product">
+                        <a href="{% url 'product_detail' pl.slug %}"><img src="{{pl.image.url}}" alt="" class="product-thumb"></a>
+                        <h2><a href="{% url 'product_detail' pl.slug %}">{{pl.name}}</a></h2>
+                        <!-- <div class="product-wid-rating">
+                            <i class="fa fa-star"></i>
+                            <i class="fa fa-star"></i>
+                            <i class="fa fa-star"></i>
+                            <i class="fa fa-star"></i>
+                            <i class="fa fa-star"></i>
+                        </div> -->
+                        <div class="product-wid-price">
+                            <ins>{{pl.price}}</ins> <del>{{pl.price | add:500}}</del>
+                        </div>                            
+                    </div>
+                    {% endfor %}
+                   
+                   
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="single-product-widget">
+                    <h2 class="product-wid-title">Top New</h2>
+                    <a href="#" class="wid-view-more">View All</a>
+                    {% for pl in products_limited %}
+                    <div class="single-wid-product">
+                        <a href="{% url 'product_detail' pl.slug %}"><img src="{{pl.image.url}}" alt="" class="product-thumb"></a>
+                        <h2><a href="{% url 'product_detail' pl.slug %}">{{pl.name}}</a></h2>
+                        <!-- <div class="product-wid-rating">
+                            <i class="fa fa-star"></i>
+                            <i class="fa fa-star"></i>
+                            <i class="fa fa-star"></i>
+                            <i class="fa fa-star"></i>
+                            <i class="fa fa-star"></i>
+                        </div> -->
+                        <div class="product-wid-price">
+                            <ins>{{pl.price}}</ins> <del>{{pl.price | add:500}}</del>
+                        </div>                            
+                    </div>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+    </div>
+</div> <!-- End product widget area -->
 {% endblock %}
