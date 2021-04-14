@@ -10,7 +10,7 @@ from .cart import Cart
 
 def cart_display(request):
 	cart = Cart(request)
-	# carts = cart.list()
+	carts = cart.list()
 	context = {
 		'cart':cart
 	}

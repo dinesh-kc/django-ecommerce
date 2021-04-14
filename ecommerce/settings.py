@@ -14,7 +14,7 @@ SECRET_KEY = 'lzj^e__!o#vd1e5p$hdb-@3%_aloi(cee(6#2ys9k%dt@put9&'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['167.172.243.193']
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
@@ -56,6 +56,7 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+                'ecommerce.context_processors.cart_detail'
             ],
         },
     },
@@ -125,3 +126,11 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media/')
 CART_SESSION_KEY = 'product_cart'
 
 USE_THOUSAND_SEPARATOR = True
+
+# for email sending configuation 
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_USE_TLS = True
+EMAIL_PORT = 587
+EMAIL_HOST_USER = 'dineshkc.testing@gmail.com'
+EMAIL_HOST_PASSWORD = 'Dinesh@2054'

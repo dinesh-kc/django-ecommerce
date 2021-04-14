@@ -1,8 +1,10 @@
 {% extends 'base.html' %}
-{% load static %}
+{% block slider %} 
+{% endblock %}
+{% block promo %}
+{% endblock %}
+{% block content %}
 
-
-{% block main %}
 
 <div class="row">
 
@@ -24,11 +26,12 @@
                             </tr>
                         </thead>
                         <tbody>
+                            <!-- Carts : {{cart.list}} -->
                             {% with carts=cart.list  %}
                             {% for cart in carts %}
 
                             <tr>
-                                <td> <img src="{{cart.obj.image.url}}" alt="" height="35px" /> </td>
+                                <td> <img src="{{cart.obj.image.url}}" alt="" style="height: 40px;"/> </td>
                                 <td>{{cart.obj.name}}</td>
                                 <td>In stock</td>
                                 <td>
@@ -78,11 +81,11 @@
             <div class="col mb-2">
                 <div class="row">
                     <div class="col-sm-12  col-md-6">
-                        <a class="btn btn-outline-info" id="payAmount" href="#">Continue Shopping</a>
+                        <a class="btn btn-outline-info" id="payAmount" href="/">Continue Shopping</a>
                     </div>
                     <div class="col-sm-12 col-md-6 text-right">
-                        {# <a class="btn  btn-outline-success " href="{% url 'orders:order' %}">Checkout</a> #}
-                        <button id="payment-button" class="btn btn-outline-success">Pay with Khalti</button>
+                        <a class="btn  btn-outline-success " href="{% url 'orders:order' %}">Checkout</a> 
+                        <!-- <button id="payment-button" class="btn btn-outline-success">Pay with Khalti</button> -->
                     </div>
 
                 </div>
@@ -136,4 +139,12 @@
     }
 </script>
 <!-- Paste this code anywhere in you body tag -->
+   
+{% endblock %}
+
+{% block brand %} 
+{% endblock %}
+
+
+{% block extra %}
 {% endblock %}

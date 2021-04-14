@@ -1,0 +1,15 @@
+<!-- templates/404.html --> 
+
+{% extends "admin/base_site.html" %}
+{% load i18n %}
+
+{% block title %}{% trans 'Page not found' %}{% endblock %}
+
+{% block content %}
+
+<!-- The updated line -->
+<h2>{% trans 'Page not found' %} - SOMETHING Custom</h2>
+
+<p>{% trans "We're sorry, but the requested page could not be found." %}</p>
+
+{% endblock %}

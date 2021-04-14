@@ -34,6 +34,8 @@ class Cart(object):
     def save(self):
         self.session.modified = True
 
+# {'3': {'quantity': 1, 'price': '3455.00'}, '4': {'quantity': '111', 'price': '2800.00'}}
+
     def list(self):
         carts = []
         for product_id in self.cart.keys():
@@ -45,10 +47,11 @@ class Cart(object):
                 'price': Decimal(int(self.cart[product_id]['quantity']) * float(obj.price))
             }
             carts.append(tmp_cart)
+        print("carts...")
         return carts
 
     def get_total_amount(self):
-        return sum(float(v['price'] ) for v in self.cart.values())
+        return sum(float(v['price'])* int(v['quantity'] ) for v in self.cart.values())
 
         '''
         cart = {'3': {'quantity': 8.0, 'price': '3455.00'}}
@@ -72,5 +75,9 @@ dct['1'] = 'fjdsfk'
     def delete(self,product_id):
         pid = str(product_id)
         del self.cart[pid]
+        self.save()
+
+    def clearcart(self):
+        del self.session[settings.CART_SESSION_KEY]
         self.save()
 

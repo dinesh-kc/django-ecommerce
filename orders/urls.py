@@ -5,5 +5,6 @@ app_name = 'orders'
 
 urlpatterns = [
     path('',customer_order,name='order'),
-    # path('checkout_successful/',checkout_successful,name='checkout_successful')
+    path('checkout_successful/',checkout_successful,name='checkout_successful'),
+    path('invoice/<int:customer_id>',html_to_pdf_view,name='invoice'),
 ]
