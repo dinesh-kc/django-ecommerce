@@ -20,6 +20,7 @@ ALLOWED_HOSTS = ['*']
 # Application definition
 
 INSTALLED_APPS = [
+    'ecommerce.apps.SuitConfig',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -30,7 +31,8 @@ INSTALLED_APPS = [
     'django.contrib.humanize',
      'shop',
     'cart',
-    'orders'
+    'orders',
+    'import_export',
 ]
 
 MIDDLEWARE = [
@@ -134,3 +136,10 @@ EMAIL_USE_TLS = True
 EMAIL_PORT = 587
 EMAIL_HOST_USER = 'dineshkc.testing@gmail.com'
 EMAIL_HOST_PASSWORD = 'Dinesh@2054'
+
+
+SUIT_CONFIG = {
+    'ADMIN_NAME': 'prinish'
+}
+
+IMPORT_EXPORT_USE_TRANSACTIONS = True

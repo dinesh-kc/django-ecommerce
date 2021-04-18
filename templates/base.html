@@ -43,11 +43,11 @@
                 <div class="col-md-8">
                     <div class="user-menu">
                         <ul>
-                            <li><a href="#"><i class="fa fa-user"></i> My Account</a></li>
-                            <li><a href="#"><i class="fa fa-heart"></i> Wishlist</a></li>
-                            <li><a href="cart.html"><i class="fa fa-user"></i> My Cart</a></li>
-                            <li><a href="checkout.html"><i class="fa fa-user"></i> Checkout</a></li>
-                            <li><a href="#"><i class="fa fa-user"></i> Login</a></li>
+                            <!-- <li><a href="#"><i class="fa fa-user"></i> My Account</a></li> -->
+                            <!-- <li><a href="#"><i class="fa fa-heart"></i> Wishlist</a></li> -->
+                            <li><a href="{% url 'cart_display' %}"><i class="fa fa-user"></i> My Cart</a></li>
+                            <li><a href="{% url 'orders:order' %}"><i class="fa fa-user"></i> Checkout</a></li>
+                            <!-- <li><a href="#"><i class="fa fa-user"></i> Login</a></li> -->
                         </ul>
                     </div>
                 </div>
@@ -84,7 +84,7 @@
             <div class="row">
                 <div class="col-sm-6">
                     <div class="logo">
-                        <h1><a href="./"><img src="{% static 'img/logo.png' %}"></a></h1>
+                        <h1><a href="./"><img src="https://www.pngfind.com/pngs/m/29-290389_e-commerce-website-logo-png-download-e-commerce.png" style="height: 38px;"></a></h1>
                     </div>
                 </div>
                 
@@ -240,14 +240,14 @@
 
 
     {% endblock %}
-    <div class="footer-top-area">
+    <!-- <div class="footer-top-area">
         <div class="zigzag-bottom"></div>
         <div class="container">
             <div class="row">
                 <div class="col-md-3 col-sm-6">
                     <div class="footer-about-us">
                         <h2>u<span>Stora</span></h2>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Perferendis sunt id doloribus vero quam laborum quas alias dolores blanditiis iusto consequatur, modi aliquid eveniet eligendi iure eaque ipsam iste, pariatur omnis sint! Suscipit, debitis, quisquam. Laborum commodi veritatis magni at?</p>
+                        <p>Ecommerce Application to sell Shoes , designed as a final year project . This application has no any commercial purposes.</p>
                         <div class="footer-social">
                             <a href="#" target="_blank"><i class="fa fa-facebook"></i></a>
                             <a href="#" target="_blank"><i class="fa fa-twitter"></i></a>
@@ -297,14 +297,16 @@
                 </div>
             </div>
         </div>
-    </div> <!-- End footer top area -->
+    </div> 
+     -->
+    <!-- End footer top area -->
     
     <div class="footer-bottom-area">
         <div class="container">
             <div class="row">
                 <div class="col-md-8">
                     <div class="copyright">
-                        <p>&copy; 2015 uCommerce. All Rights Reserved. <a href="http://www.freshdesignweb.com" target="_blank">freshDesignweb.com</a></p>
+                        <p>&copy; 2021 Designed as final year project <a href="#" target="_blank">By Pranish Katwal</a></p>
                     </div>
                 </div>
                 

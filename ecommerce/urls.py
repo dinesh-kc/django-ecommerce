@@ -6,6 +6,10 @@ from django.conf.urls.static import static
 
 from shop.views import index
 
+admin.site.site_header = 'Shop Ecommerce'
+admin.site.site_title = 'Shop-ecommerce'
+admin.site.index_title = 'shop-administration'
+
 
 urlpatterns = [
     path('admin/', admin.site.urls),

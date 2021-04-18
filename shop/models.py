@@ -1,4 +1,5 @@
 from django.db import models
+from django.utils.html import mark_safe
 
 class Category(models.Model):
     name = models.CharField(max_length=200, db_index=True)
@@ -27,6 +28,9 @@ class Product(models.Model):
         index_together = (('id', 'slug'),)
     def __str__(self):
         return self.name
+    def image_tag(self):
+        return mark_safe('<img src="%s" width="50" height="50" />' % (self.image.url))
+    image_tag.short_description = 'Image'
 
 class ProductReview(models.Model):
     product = models.ForeignKey(Product,related_name='reviews',on_delete=models.CASCADE)
